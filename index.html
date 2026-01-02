@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Rumbero Tour Playero - Thomas Vista VIP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .text-shadow-glow { text-shadow: 0 0 25px rgba(250, 204, 21, 0.8); }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .bus-shadow { filter: drop-shadow(0 0 20px rgba(250, 204, 21, 0.6)); }
+        .tiktok-colors { 
+            background: #000;
+            box-shadow: -2px -2px 0px #ff0050, 2px 2px 0px #00f2ea;
+        }
+        #contact-menu { display: none; }
+        #contact-menu.active { display: flex; }
+    </style>
+</head>
+<body class="bg-slate-900 text-white selection:bg-yellow-500 pb-24">
+
+    <!-- Header / Hero Section -->
+    <header class="relative h-[530px] flex items-center justify-center overflow-hidden border-b border-slate-800">
+        <div class="absolute inset-0 bg-gradient-to-b from-blue-600/25 via-slate-900 to-slate-900 z-10"></div>
+        
+        <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
+            <div class="absolute top-10 right-10 text-yellow-500 animate-pulse">
+                <i data-lucide="sun" size="100"></i>
+            </div>
+            <div class="absolute bottom-20 left-1/2 -translate-x-1/2 text-blue-400/30">
+                <i data-lucide="waves" size="200"></i>
+            </div>
+        </div>
+
+        <div class="relative z-20 text-center px-4">
+            <div class="flex flex-col items-center gap-2 mb-6 transition-all duration-700">
+                <div class="relative flex items-end gap-3 animate-float">
+                    <div class="relative bus-shadow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="125" height="125" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-400">
+                            <path d="M19 17h2l.64-2.54c.24-.959.24-1.962 0-2.92l-1.07-4.27A3 3 0 0 0 17.66 5H4a2 2 0 0 0-2 2v10h2" />
+                            <path d="M14 17H9" />
+                            <circle cx="6.5" cy="17.5" r="2.5" fill="#FBBF24" />
+                            <circle cx="16.5" cy="17.5" r="2.5" fill="#FBBF24" />
+                            <path d="M17 10V5" />
+                            <path d="M2 10h16" />
+                            <path d="M2 5h15" />
+                        </svg>
+                        <div class="absolute -top-1 -right-1 bg-red-600 text-[9px] font-bold px-2 py-0.5 rounded shadow-lg border border-red-400">STOP</div>
+                    </div>
+                    <div class="text-white animate-pulse mb-6">
+                        <i data-lucide="mic-2" size="48"></i>
+                    </div>
+                </div>
+                <div class="flex gap-5 mt-3 text-4xl">
+                    <span class="animate-bounce">💃</span>
+                    <span class="animate-bounce" style="animation-delay: 0.1s">🕺</span>
+                    <span class="animate-bounce" style="animation-delay: 0.2s">🍹</span>
+                </div>
+            </div>
+
+            <!-- Etiqueta VIP -->
+            <div class="bg-yellow-400 text-black text-[11px] font-black px-6 py-1.5 rounded-full inline-flex items-center gap-2 mb-5 shadow-2xl uppercase border-2 border-yellow-300">
+                <i data-lucide="star" size="14" fill="currentColor" class="animate-spin-slow"></i> International Thomas Vista VIP
+            </div>
+
+            <h1 class="text-4xl md:text-7xl font-black italic tracking-tighter mb-2 leading-tight uppercase">
+                Bus Rumbero <br>
+                <span class="text-yellow-400 text-shadow-glow text-3xl md:text-5xl">TOUR PLAYERO</span>
+            </h1>
+
+            <div class="flex items-center justify-center gap-3 mt-8 text-blue-300">
+                <div class="h-[1px] w-12 bg-blue-500/40"></div>
+                <div class="flex items-center gap-2 whitespace-nowrap">
+                    <i data-lucide="sun" size="18" class="text-yellow-400 animate-pulse"></i>
+                    <p class="text-[13px] font-black uppercase tracking-[0.3em] text-blue-100 italic">Sol • Playa • Arena</p>
+                    <i data-lucide="waves" size="18" class="text-blue-400 animate-pulse"></i>
+                </div>
+                <div class="h-[1px] w-12 bg-blue-500/40"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegación Sticky -->
+    <nav class="flex justify-around bg-slate-800/95 backdrop-blur-xl sticky top-4 z-30 py-4 border border-slate-700/50 mx-4 rounded-2xl shadow-2xl mt-[-40px]">
+        <button onclick="showTab('inicio')" id="btn-inicio" class="tab-btn flex flex-col items-center gap-1 text-[11px] font-black uppercase text-yellow-400">
+            <i data-lucide="star" size="24"></i> Inicio
+        </button>
+        <button onclick="showTab('precios')" id="btn-precios" class="tab-btn flex flex-col items-center gap-1 text-[11px] font-black uppercase text-slate-400">
+            <i data-lucide="navigation" size="24"></i> Precios
+        </button>
+        <button onclick="showTab('eventos')" id="btn-eventos" class="tab-btn flex flex-col items-center gap-1 text-[11px] font-black uppercase text-slate-400">
+            <i data-lucide="users" size="24"></i> Eventos
+        </button>
+    </nav>
+
+    <main class="p-6 max-w-2xl mx-auto mt-8">
+        <!-- Pestaña Inicio -->
+        <div id="inicio" class="tab-content active space-y-8 animate-in fade-in duration-500">
+            <div class="bg-gradient-to-br from-slate-800 to-slate-900 p-7 rounded-3xl border border-slate-700 shadow-xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-5 opacity-10 text-5xl font-black italic uppercase tracking-tighter text-yellow-500">Vista</div>
+                <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+                    <i data-lucide="rocket" class="text-yellow-400 animate-float"></i> ¡Rumba sin límites!
+                </h2>
+                <p class="text-slate-300 leading-relaxed text-lg text-white">
+                    Súbete al mejor **autobús escolar rumbero**. Equipado con sonido de alta fidelidad, luces láser, cámara de humo y micrófonos para karaoke. ¡El viaje más divertido de camino al mar! ☀️🌊
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-5">
+                <div class="bg-slate-800/50 p-5 rounded-2xl border border-slate-700 group shadow-lg">
+                    <i data-lucide="music" class="text-yellow-400 mb-3" size="28"></i>
+                    <h3 class="font-bold text-sm uppercase text-white">Sonido Pro</h3>
+                    <p class="text-[11px] text-slate-400">Potencia real 2025</p>
+                </div>
+                <div class="bg-slate-800/50 p-5 rounded-2xl border border-slate-700 group shadow-lg">
+                    <i data-lucide="wind" class="text-purple-400 mb-3" size="28"></i>
+                    <h3 class="font-bold text-sm uppercase text-white">Efecto Disco</h3>
+                    <p class="text-[11px] text-slate-400">Humo y Láseres</p>
+                </div>
+                <div class="bg-slate-800/50 p-5 rounded-2xl border border-slate-700 group shadow-lg">
+                    <i data-lucide="mic-2" class="text-pink-500 mb-3" size="28"></i>
+                    <h3 class="font-bold text-sm uppercase text-white">Karaoke</h3>
+                    <p class="text-[11px] text-slate-400">Saca tu artista</p>
+                </div>
+                <div class="bg-slate-800/50 p-5 rounded-2xl border border-slate-700 group shadow-lg">
+                    <i data-lucide="battery-charging" class="text-green-400 mb-3" size="28"></i>
+                    <h3 class="font-bold text-sm uppercase text-white">Carga USB</h3>
+                    <p class="text-[11px] text-slate-400">Para tu móvil</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pestaña Precios -->
+        <div id="precios" class="tab-content space-y-6 animate-in slide-in-from-right duration-500">
+            <h2 class="text-3xl font-black uppercase italic tracking-tighter mb-4 text-center text-yellow-400">Tarifas del Tour</h2>
+            <div class="space-y-4">
+                <div class="flex items-center justify-between bg-slate-800 p-6 rounded-2xl border-l-8 border-yellow-400 shadow-xl">
+                    <div><h3 class="font-bold text-xl uppercase tracking-tight">Litoral Central</h3><p class="text-sm text-slate-400">Mamo hasta Los Cocos</p></div>
+                    <div class="text-right"><span class="text-3xl font-black text-yellow-400">$160</span></div>
+                </div>
+                <div class="flex items-center justify-between bg-slate-800 p-6 rounded-2xl border-l-8 border-yellow-400 shadow-xl">
+                    <div><h3 class="font-bold text-xl uppercase tracking-tight">Playas Lejanas</h3><p class="text-sm text-slate-400">Naiguatá / Los Ángeles</p></div>
+                    <div class="text-right"><span class="text-2xl font-black text-yellow-400">$180</span></div>
+                </div>
+                <div class="flex items-center justify-between bg-slate-800 p-6 rounded-2xl border-l-8 border-yellow-400 shadow-xl">
+                    <div><h3 class="font-bold text-xl uppercase tracking-tight">Los Caracas</h3><p class="text-sm text-slate-400">Ruta Premium</p></div>
+                    <div class="text-right"><span class="text-2xl font-black text-yellow-400">$200</span></div>
+                </div>
+                <div class="bg-blue-900/40 p-6 rounded-2xl border border-blue-500/30 flex items-center justify-between shadow-2xl">
+                    <div>
+                        <h3 class="font-bold text-xl flex items-center gap-2 text-blue-100">
+                            <i data-lucide="snowflake" class="text-blue-300 animate-spin-slow" size="24"></i> Cava con Hielo 🧊
+                        </h3>
+                        <p class="text-sm text-blue-200 italic">Hielo de fábrica de máxima duración</p>
+                    </div>
+                    <div class="text-right"><span class="text-3xl font-black text-blue-300">$12</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pestaña Eventos -->
+        <div id="eventos" class="tab-content space-y-6 animate-in slide-in-from-right duration-500">
+            <h2 class="text-3xl font-black uppercase italic tracking-tighter text-center text-yellow-400">Eventos VIP</h2>
+            <div class="grid grid-cols-1 gap-4">
+                <div class="bg-slate-800 p-5 rounded-2xl flex items-center justify-between border border-slate-700 shadow-xl">
+                    <div class="flex items-center gap-4"><span class="text-2xl">🎤</span> <span class="uppercase text-sm font-black tracking-tight text-white">Rumba Karaoke</span></div>
+                    <i data-lucide="star" size="18" class="text-yellow-400"></i>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-2xl flex items-center justify-between border border-slate-700 shadow-xl">
+                    <div class="flex items-center gap-4"><span class="text-2xl">🎂</span> <span class="uppercase text-sm font-black tracking-tight text-white">Cumpleaños a bordo</span></div>
+                    <i data-lucide="star" size="18" class="text-yellow-400"></i>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-2xl flex items-center justify-between border border-slate-700 shadow-xl">
+                    <div class="flex items-center gap-4"><span class="text-2xl">🏖️</span> <span class="uppercase text-sm font-black tracking-tight text-white">Cumpleaños Playeros</span></div>
+                    <i data-lucide="star" size="18" class="text-yellow-400"></i>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-2xl flex items-center justify-between border border-slate-700 shadow-xl">
+                    <div class="flex items-center gap-4"><span class="text-2xl">🎭</span> <span class="uppercase text-sm font-black tracking-tight text-white">Fiestas Temáticas</span></div>
+                    <i data-lucide="star" size="18" class="text-yellow-400"></i>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-2xl flex items-center justify-between border border-slate-700 shadow-xl">
+                    <div class="flex items-center gap-4"><span class="text-2xl">🎓</span> <span class="uppercase text-sm font-black tracking-tight text-white">Graduaciones VIP</span></div>
+                    <i data-lucide="star" size="18" class="text-yellow-400"></i>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-2xl flex items-center justify-between border border-slate-700 shadow-xl">
+                    <div class="flex items-center gap-4"><span class="text-2xl">✨</span> <span class="uppercase text-sm font-black tracking-tight text-white">Fiestas Personalizadas</span></div>
+                    <i data-lucide="star" size="18" class="text-yellow-400"></i>
+                </div>
+                
+                <!-- TIKTOK TOUR VIP -->
+                <a href="https://www.tiktok.com/@denisgarcia212?_r=1&_t=ZM-92j6LG5KKBX" target="_blank" class="tiktok-colors p-5 rounded-2xl flex items-center justify-between border border-slate-700 shadow-2xl scale-[1.02] transition-transform active:scale-95">
+                    <div class="flex items-center gap-4">
+                        <i data-lucide="video" class="text-white animate-pulse" size="24"></i>
+                        <span class="uppercase text-sm font-black tracking-tight text-white">TikTok & Reels Tour VIP</span>
+                    </div>
+                    <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest animate-pulse">¡Viralízate!</span>
+                </a>
+
+                <div class="bg-slate-800 p-5 rounded-2xl flex items-center justify-between border border-slate-700 shadow-xl">
+                    <div class="flex items-center gap-4"><span class="text-2xl">🌴</span> <span class="uppercase text-sm font-black tracking-tight text-white">Paseos de Panas</span></div>
+                    <i data-lucide="star" size="18" class="text-yellow-400"></i>
+                </div>
+                <div class="bg-slate-800 p-5 rounded-2xl flex items-center justify-between border border-slate-700 shadow-xl">
+                    <div class="flex items-center gap-4"><span class="text-2xl">🥂</span> <span class="uppercase text-sm font-black tracking-tight text-white">Despedidas Rumberas</span></div>
+                    <i data-lucide="star" size="18" class="text-yellow-400"></i>
+                </div>
+
+                <!-- FIESTAS SWINGER VIP -->
+                <div class="bg-slate-900 p-5 rounded-2xl flex items-center justify-between border border-red-900/50 shadow-2xl border-l-4 border-l-red-600">
+                    <div class="flex items-center gap-4">
+                        <i data-lucide="heart" size="24" class="text-red-600 fill-red-600"></i>
+                        <span class="uppercase text-sm font-black tracking-tight text-white">Fiestas Swinger VIP</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 2v10a5 5 0 0 0 10 0V2" />
+                            <path d="M12 22V12" />
+                            <path d="M12 7h.01" />
+                            <path d="M8 7H7" />
+                            <path d="M16 7h1" />
+                        </svg>
+                        <i data-lucide="flame" size="24" class="text-orange-500 fill-orange-500 animate-pulse"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="px-6 py-14 bg-slate-950 text-center space-y-7 rounded-t-[4rem] border-t-2 border-slate-800 relative shadow-[0_-15px_40px_rgba(0,0,0,0.5)]">
+        <div class="space-y-2">
+            <p class="text-yellow-400 font-bold uppercase text-xs italic tracking-widest">Tu rumba te espera</p>
+            <p class="text-white text-4xl font-black uppercase italic tracking-tighter leading-none">¿Armamos la rumba? 🚌🔥</p>
+        </div>
+        
+        <div class="flex flex-col gap-4">
+            <button onclick="toggleContact()" class="w-full bg-green-600 hover:bg-green-500 text-white py-5 rounded-3xl font-black text-xl flex items-center justify-center gap-4 transition-all active:scale-95 shadow-xl border-b-4 border-green-800 uppercase">
+                <i data-lucide="phone" size="24"></i> Agendar Ahora
+            </button>
+            <a href="https://www.tiktok.com/@denisgarcia212?_r=1&_t=ZM-92j6LG5KKBX" target="_blank" class="w-full tiktok-colors text-white py-5 rounded-3xl font-black text-xl flex items-center justify-center gap-4 transition-all active:scale-95 shadow-xl uppercase">
+                <i data-lucide="music-2" size="24"></i> Síguenos en TikTok
+            </a>
+        </div>
+
+        <div class="flex flex-col gap-1 pt-4">
+            <p class="text-xs text-slate-500 uppercase font-black tracking-widest opacity-70">Contacto Directo</p>
+            <p class="text-3xl font-black text-white tracking-tighter leading-none">0412 9862003</p>
+        </div>
+    </footer>
+
+    <!-- MENÚ EMERGENTE DE CONTACTO -->
+    <div id="contact-menu" class="fixed inset-0 z-[100] bg-slate-950/80 backdrop-blur-md items-center justify-center p-6 opacity-0 pointer-events-none transition-all duration-300">
+        <div class="bg-slate-900 w-full max-w-sm rounded-[2.5rem] p-8 border border-slate-700 shadow-2xl transform scale-90 transition-transform duration-300">
+            <h3 class="text-2xl font-black uppercase italic tracking-tighter text-center mb-8 leading-tight">¿Cómo quieres <br><span class="text-yellow-400">contactarnos?</span></h3>
+            <div class="space-y-4 text-left">
+                <a href="https://wa.me/584129862003?text=Hola!%20Quiero%20información%20del%20Bus%20Rumbero%20Tour%20Playero" class="flex items-center gap-4 bg-green-600 p-5 rounded-2xl font-black uppercase tracking-tight shadow-lg">
+                    <i data-lucide="message-circle" size="24"></i> Enviar WhatsApp
+                </a>
+                <a href="tel:+584129862003" class="flex items-center gap-4 bg-blue-600 p-5 rounded-2xl font-black uppercase tracking-tight shadow-lg">
+                    <i data-lucide="phone-call" size="24"></i> Llamar Directo
+                </a>
+                <button onclick="toggleContact()" class="w-full mt-4 text-slate-500 font-bold uppercase text-xs py-2 tracking-widest">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOTONES FLOTANTES -->
+    <div class="fixed bottom-8 right-6 flex flex-col gap-4 z-50">
+        <a href="https://www.tiktok.com/@denisgarcia212?_r=1&_t=ZM-92j6LG5KKBX" target="_blank" class="tiktok-colors p-4 rounded-full shadow-2xl transition-all hover:scale-110 active:scale-95">
+            <i data-lucide="video" size="28" class="text-white"></i>
+        </a>
+        <button onclick="toggleContact()" class="bg-green-500 p-4 rounded-full shadow-2xl animate-bounce transition-all hover:scale-110 active:scale-95">
+            <i data-lucide="message-circle" size="32"></i>
+  
